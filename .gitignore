@@ -1,0 +1,34 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IDE ###
+.idea/
+*.iml
+.vscode/
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Local config ###
+*.env
+application-local.yaml
+
+### Database ###
+*.db
+*.mv.db
+*.trace.db
+
+### Logs ###
+*.log
+logs/
+
+### Instalador / JRE bundled ###
+instalador/
+package-runtime/
+package-input/

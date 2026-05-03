@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Escudo -->
+  <path d="M16 2L4 7v9c0 7.5 5.2 13.2 12 15 6.8-1.8 12-7.5 12-15V7L16 2z" fill="#002060"/>
+  <!-- Estrela central -->
+  <path d="M16 9l1.8 5.5h5.7l-4.6 3.3 1.8 5.5L16 20l-4.7 3.3 1.8-5.5-4.6-3.3h5.7z" fill="#c4922a"/>
+</svg>
