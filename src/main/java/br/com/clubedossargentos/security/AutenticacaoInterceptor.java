@@ -29,6 +29,7 @@ public class AutenticacaoInterceptor implements HandlerInterceptor {
         if (path.startsWith("/api/auth/login")
                 || path.startsWith("/api/auth/status-publico")
                 || path.startsWith("/api/auth/cadastrar-usuario")
+                || path.startsWith("/api/saude")
                 || path.startsWith("/error")) {
             return true;
         }
