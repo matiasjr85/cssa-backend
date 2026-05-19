@@ -234,6 +234,7 @@ public class PessoaService {
         return calcularValorSocio(pessoa).add(calcularValorDependentes(pessoa));
     }
 
+    @Transactional
     public Pessoa pagarMensalidade(Long id, Integer quantidadeParcelas, String observacao, BigDecimal valorSocioPago, BigDecimal valorDependentesPago, TipoPagamento tipoPagamento, List<String> mesesReferencia) {
         Pessoa pessoa = buscarPorId(id);
         if (pessoa.getStatus() == StatusSocio.DEMITIDO) {
@@ -424,6 +425,7 @@ public class PessoaService {
         return pessoaRepository.save(pessoa);
     }
 
+    @Transactional
     public Renegociacao renegociar(Long id, RenegociacaoRequestDTO dto) {
         Pessoa pessoa = buscarPorId(id);
         List<String> mesesSelecionados = normalizarMesesReferencia(dto.getMesesReferencia());
