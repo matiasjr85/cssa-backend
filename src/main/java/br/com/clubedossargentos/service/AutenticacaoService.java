@@ -9,6 +9,7 @@ import br.com.clubedossargentos.exception.RegraNegocioException;
 import br.com.clubedossargentos.repository.UsuarioSistemaRepository;
 import br.com.clubedossargentos.security.UsuarioContexto;
 import br.com.clubedossargentos.security.UsuarioLogado;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,10 @@ import java.util.UUID;
 @Service
 public class AutenticacaoService {
     private static final String ADMIN_FIXO_NOME = "admin";
-    private static final String ADMIN_FIXO_SENHA = "ClubeGabriel2026@";
+
+    @Value("${admin.password:admin123}")
+    private String adminFixoSenha;
+
     private final UsuarioSistemaRepository usuarioSistemaRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuditoriaService auditoriaService;
@@ -37,7 +41,7 @@ public class AutenticacaoService {
     public void garantirAdministradorPadrao() {
         UsuarioSistema admin = usuarioSistemaRepository.findByNomeIgnoreCase(ADMIN_FIXO_NOME).orElseGet(UsuarioSistema::new);
         admin.setNome(ADMIN_FIXO_NOME);
-        admin.setSenhaHash(passwordEncoder.encode(ADMIN_FIXO_SENHA));
+        admin.setSenhaHash(passwordEncoder.encode(adminFixoSenha));
         admin.setPerfil(PerfilUsuario.ADMIN);
         admin.setAtivo(true);
         if (admin.getDataCriacao() == null) {
